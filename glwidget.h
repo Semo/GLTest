@@ -40,7 +40,7 @@ public slots:
   void rotateX(GLfloat angle);
   void rotateY(GLfloat angle);
   void rotateZ(GLfloat angle);
-  void scale(GLfloat x, GLfloat y, GLfloat z);
+  void scale(GLfloat factor);
   void timerRotation();
 
 private:
@@ -67,9 +67,9 @@ private:
 
   QTimer *timer;
 
-  float trans[3];
-  float rot[3];
-  float scales[3];
+  GLfloat trans[3];
+  GLfloat rot[3];
+  GLfloat factor;
 
 
 

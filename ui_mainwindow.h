@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Jul 9 18:36:47 2012
+** Created: Mon Jul 9 18:48:31 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -43,19 +43,14 @@ public:
     QLineEdit *transY;
     QLineEdit *roteX;
     QLineEdit *roteY;
-    QLineEdit *scaleX;
-    QLineEdit *scaleY;
+    QLineEdit *scaleFac;
     QLabel *label_7;
     QLabel *label_8;
-    QLabel *label_9;
-    QLabel *label_10;
     QLabel *label_11;
     QLabel *label_12;
     QLineEdit *transZ;
     QLineEdit *roteZ;
-    QLineEdit *scaleZ;
     QLabel *label_13;
-    QLabel *label_14;
     QLabel *label_15;
     GLWidget *glwidget;
     QLabel *label_6;
@@ -108,24 +103,15 @@ public:
         roteY = new QLineEdit(groupBox);
         roteY->setObjectName(QString::fromUtf8("roteY"));
         roteY->setGeometry(QRect(30, 211, 113, 27));
-        scaleX = new QLineEdit(groupBox);
-        scaleX->setObjectName(QString::fromUtf8("scaleX"));
-        scaleX->setGeometry(QRect(30, 315, 113, 27));
-        scaleY = new QLineEdit(groupBox);
-        scaleY->setObjectName(QString::fromUtf8("scaleY"));
-        scaleY->setGeometry(QRect(30, 345, 113, 27));
+        scaleFac = new QLineEdit(groupBox);
+        scaleFac->setObjectName(QString::fromUtf8("scaleFac"));
+        scaleFac->setGeometry(QRect(30, 315, 113, 27));
         label_7 = new QLabel(groupBox);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(19, 54, 20, 20));
         label_8 = new QLabel(groupBox);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(19, 185, 16, 17));
-        label_9 = new QLabel(groupBox);
-        label_9->setObjectName(QString::fromUtf8("label_9"));
-        label_9->setGeometry(QRect(19, 319, 16, 17));
-        label_10 = new QLabel(groupBox);
-        label_10->setObjectName(QString::fromUtf8("label_10"));
-        label_10->setGeometry(QRect(19, 350, 16, 17));
         label_11 = new QLabel(groupBox);
         label_11->setObjectName(QString::fromUtf8("label_11"));
         label_11->setGeometry(QRect(19, 217, 16, 17));
@@ -138,15 +124,9 @@ public:
         roteZ = new QLineEdit(groupBox);
         roteZ->setObjectName(QString::fromUtf8("roteZ"));
         roteZ->setGeometry(QRect(30, 241, 113, 27));
-        scaleZ = new QLineEdit(groupBox);
-        scaleZ->setObjectName(QString::fromUtf8("scaleZ"));
-        scaleZ->setGeometry(QRect(31, 375, 113, 27));
         label_13 = new QLabel(groupBox);
         label_13->setObjectName(QString::fromUtf8("label_13"));
         label_13->setGeometry(QRect(19, 247, 16, 17));
-        label_14 = new QLabel(groupBox);
-        label_14->setObjectName(QString::fromUtf8("label_14"));
-        label_14->setGeometry(QRect(20, 380, 16, 17));
         label_15 = new QLabel(groupBox);
         label_15->setObjectName(QString::fromUtf8("label_15"));
         label_15->setGeometry(QRect(20, 114, 16, 17));
@@ -188,9 +168,7 @@ public:
         QObject::connect(roteX, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateX()));
         QObject::connect(roteY, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateY()));
         QObject::connect(roteZ, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateZ()));
-        QObject::connect(scaleX, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
-        QObject::connect(scaleY, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
-        QObject::connect(scaleZ, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
+        QObject::connect(scaleFac, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -204,15 +182,13 @@ public:
         groupBox->setTitle(QApplication::translate("MainWindow", "Transformations", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Translation:", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "Rotation:", 0, QApplication::UnicodeUTF8));
-        label_3->setText(QApplication::translate("MainWindow", "Scale:", 0, QApplication::UnicodeUTF8));
+        label_3->setText(QApplication::translate("MainWindow", "Scalefactor:", 0, QApplication::UnicodeUTF8));
+        scaleFac->setPlaceholderText(QApplication::translate("MainWindow", "1", 0, QApplication::UnicodeUTF8));
         label_7->setText(QApplication::translate("MainWindow", "X", 0, QApplication::UnicodeUTF8));
         label_8->setText(QApplication::translate("MainWindow", "X", 0, QApplication::UnicodeUTF8));
-        label_9->setText(QApplication::translate("MainWindow", "X", 0, QApplication::UnicodeUTF8));
-        label_10->setText(QApplication::translate("MainWindow", "Y", 0, QApplication::UnicodeUTF8));
         label_11->setText(QApplication::translate("MainWindow", "Y", 0, QApplication::UnicodeUTF8));
         label_12->setText(QApplication::translate("MainWindow", "Y", 0, QApplication::UnicodeUTF8));
         label_13->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
-        label_14->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("MainWindow", "Render View", 0, QApplication::UnicodeUTF8));
         menuMen->setTitle(QApplication::translate("MainWindow", "Men\303\274", 0, QApplication::UnicodeUTF8));

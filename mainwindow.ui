@@ -77,7 +77,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Scale:</string>
+      <string>Scalefactor:</string>
      </property>
     </widget>
     <widget class="QLineEdit" name="transX">
@@ -120,7 +120,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="scaleX">
+    <widget class="QLineEdit" name="scaleFac">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -129,15 +129,8 @@
        <height>27</height>
       </rect>
      </property>
-    </widget>
-    <widget class="QLineEdit" name="scaleY">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>345</y>
-       <width>113</width>
-       <height>27</height>
-      </rect>
+     <property name="placeholderText">
+      <string>1</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_7">
@@ -164,32 +157,6 @@
      </property>
      <property name="text">
       <string>X</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_9">
-     <property name="geometry">
-      <rect>
-       <x>19</x>
-       <y>319</y>
-       <width>16</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>X</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_10">
-     <property name="geometry">
-      <rect>
-       <x>19</x>
-       <y>350</y>
-       <width>16</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Y</string>
      </property>
     </widget>
     <widget class="QLabel" name="label_11">
@@ -238,34 +205,11 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="scaleZ">
-     <property name="geometry">
-      <rect>
-       <x>31</x>
-       <y>375</y>
-       <width>113</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
        <x>19</x>
        <y>247</y>
-       <width>16</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Z</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_14">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>380</y>
        <width>16</width>
        <height>17</height>
       </rect>
@@ -505,7 +449,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>scaleX</sender>
+   <sender>scaleFac</sender>
    <signal>textChanged(QString)</signal>
    <receiver>MainWindow</receiver>
    <slot>scale()</slot>
@@ -513,38 +457,6 @@
     <hint type="sourcelabel">
      <x>766</x>
      <y>405</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>421</x>
-     <y>295</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>scaleY</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>scale()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>766</x>
-     <y>435</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>421</x>
-     <y>295</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>scaleZ</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>scale()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>767</x>
-     <y>465</y>
     </hint>
     <hint type="destinationlabel">
      <x>421</x>

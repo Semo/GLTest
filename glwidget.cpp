@@ -54,11 +54,9 @@ void GLWidget::rotateZ(GLfloat angle){
   updateGL ();
 }
 
-void GLWidget::scale(GLfloat x, GLfloat y, GLfloat z){
+void GLWidget::scale(GLfloat factor){
 
-  scales[X] = x;
-  scales[Y] = y;
-  scales[Z] = z;
+  this->factor = factor;
 
   cout << "scale" << endl;
   updateGL ();
@@ -121,6 +119,7 @@ void GLWidget::loadOBJ() {
 
 QTimer *timer;
 void GLWidget::initializeGL() {
+  factor = 1;
   QLocale::setDefault (QLocale::C);
   loadOBJ();
   //resizeGL();
@@ -186,6 +185,7 @@ void GLWidget::paintGL() {
   modelMatrix.rotate (rot[X], 1.0, 0.0, 0.0);
   modelMatrix.rotate (rot[Y], 0.0, 1.0, 0.0);
   modelMatrix.rotate (rot[Z], 0.0, 0.0, 1.0);
+  modelMatrix.scale (factor);
   //  modelMatrix.rotate(RAD_TO_DEG(angle), 0.0f, 0.0f, 1.0f);
   //  modelMatrix.rotate(RAD_TO_DEG(angle)*2, 0.0f, 1.0f, 0.0f);
 

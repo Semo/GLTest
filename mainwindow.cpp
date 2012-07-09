@@ -55,8 +55,6 @@ void MainWindow::rotateZ() {
 
 
 void MainWindow::scale() {
-  GLfloat x = ui->scaleX->text ().toFloat ();
-  GLfloat y = ui->scaleY->text ().toFloat ();
-  GLfloat z = ui->scaleZ->text ().toFloat ();
-  ui->glwidget->scale (x,y,z);
+  GLfloat factor = ui->scaleFac->text ().toFloat ();
+  ui->glwidget->scale (factor);
 }
