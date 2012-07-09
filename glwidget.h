@@ -3,14 +3,11 @@
 
 #include <QWidget>
 #include <QtOpenGL/QGLWidget>
-
 #include <QtOpenGL/QGLBuffer>
 #include <QtOpenGL/QGLShader>
 #include <QtOpenGL/QGLShaderProgram>
 #include <QKeyEvent>
 #include <QTimer>
-
-
 
 #define NUM_BUFFERS 3
 #define INDICES 0
@@ -20,9 +17,18 @@
 #define Y 1
 #define Z 2
 
-class GLWidget : public QGLWidget
-{
+/**
+ *
+ * @author François Dubois <siokdub@gmail.com>
+ * @author Sebastian Morkisch <semox78@gmail.com>
+ *
+ * @brief The GLWidget class
+ */
+
+class GLWidget : public QGLWidget {
+
   Q_OBJECT
+
 public:
   explicit GLWidget(QWidget *parent = 0);
   ~GLWidget();
@@ -30,7 +36,6 @@ public:
   void initializeGL();
   void paintGL();
   void resizeGL();
-
   void keyPressEvent(QKeyEvent *event);
 
 signals:
@@ -44,7 +49,6 @@ public slots:
   void timerRotation();
 
 private:
-
   QGLBuffer* buffers[NUM_BUFFERS];
   QGLShaderProgram* shaderProgram;
 
@@ -70,10 +74,5 @@ private:
   GLfloat trans[3];
   GLfloat rot[3];
   GLfloat factor;
-
-
-
-
 };
-
 #endif // GLWIDGET_H

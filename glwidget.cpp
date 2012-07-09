@@ -7,8 +7,9 @@
 using namespace std;
 
 
-
 GLWidget::GLWidget(QWidget *parent): QGLWidget(parent){}
+
+QTimer *timer;
 
 GLWidget::~GLWidget() {
   if(buffers) {
@@ -24,18 +25,14 @@ void GLWidget::keyPressEvent(QKeyEvent *event) {
       cout << "Test" << endl;
       updateGL();
     }
-
-
 }
 
 void GLWidget::translate(GLfloat x, GLfloat y, GLfloat z){
-
   trans[X] = x;
   trans[Y] = y;
   trans[Z] = z;
   cout << "translate" << endl;
   updateGL ();
-
 }
 
 void GLWidget::rotateX(GLfloat angle){
@@ -55,38 +52,11 @@ void GLWidget::rotateZ(GLfloat angle){
 }
 
 void GLWidget::scale(GLfloat factor){
-
   this->factor = factor;
-
-  cout << "scale" << endl;
   updateGL ();
-
-
 }
 
-
-
-
-
 void GLWidget::loadOBJ() {
-
-  //    float vertices[][3] = {
-  //        {0.0, 0.0, 0.0},
-  //        {1.0, 0.0, 0.0},
-  //        {1.0, 1.0, 0.0}
-  //    };
-
-  //    float colors[][3] = {
-  //        {1.0, 0.0, 0.0},
-  //        {1.0, 1.0, 0.0},
-  //        {0.0, 0.0, 1.0}
-  //        //{0.0, 0.0, 1.0}
-  //    };
-
-  //    unsigned short indices [] = {
-  //        0,1,2
-  //    };
-
   vector<float> *vertices, *normals, *textures;
   vector<unsigned short>* f_indices, *n_indices, *t_indices;
 
@@ -107,28 +77,22 @@ void GLWidget::loadOBJ() {
 
   buffers[VERTICES]->bind();
   buffers[VERTICES]->allocate(&(*vertices)[0], vertices->size() * sizeof(float));
-  //    buffers[VERTICES]->allocate(vertices, sizeof(vertices) *sizeof(float));
   QGLBuffer::release(QGLBuffer::VertexBuffer);
 
   buffers[INDICES]->bind();
   buffers[INDICES]->allocate(&(*f_indices)[0], f_indices->size() * sizeof(unsigned short));
-  //    buffers[INDICES]->allocate(indices, sizeof(indices) * sizeof(float));
   QGLBuffer::release(QGLBuffer::IndexBuffer);
-
 }
 
-QTimer *timer;
+
 void GLWidget::initializeGL() {
+  //Scale Helper. Initial Value.
   factor = 1;
   QLocale::setDefault (QLocale::C);
   loadOBJ();
-  //resizeGL();
-
   Q_INIT_RESOURCE(glslResources);
-
   QGLShader vertexShader(QGLShader::Vertex);
   vertexShader.compileSourceFile(":vert");
-
   QGLShader fragmentShader(QGLShader::Fragment);
   fragmentShader.compileSourceFile(":frag");
 
@@ -163,7 +127,6 @@ void GLWidget::initializeGL() {
                     QVector3D(0.0, 1.0, 0.0));
 
   glClearColor(0.0, 0.0, 0.0, 1.0);
-
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(timerRotation()));
   timer->setInterval(16);
@@ -179,36 +142,24 @@ void GLWidget::timerRotation() {
 
 void GLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT);
-
   modelMatrix.setToIdentity();
   modelMatrix.translate(trans[X], trans[Y], trans[Z]);
   modelMatrix.rotate (rot[X], 1.0, 0.0, 0.0);
   modelMatrix.rotate (rot[Y], 0.0, 1.0, 0.0);
   modelMatrix.rotate (rot[Z], 0.0, 0.0, 1.0);
   modelMatrix.scale (factor);
-  //  modelMatrix.rotate(RAD_TO_DEG(angle), 0.0f, 0.0f, 1.0f);
-  //  modelMatrix.rotate(RAD_TO_DEG(angle)*2, 0.0f, 1.0f, 0.0f);
-
   shaderProgram->bind();
-
   shaderProgram->enableAttributeArray(vertexBufferLocation);
-
   shaderProgram->setUniformValue(modelMatrixLocation, modelMatrix);
   shaderProgram->setUniformValue(viewMatrixLocation, viewMatrix);
   shaderProgram->setUniformValue(projectionMatrixLocation, projectionMatrix);
-
   buffers[VERTICES]->bind();
   shaderProgram->setAttributeBuffer(vertexBufferLocation, GL_FLOAT, 0, 3);
-  //shaderProgram->setAttributeArray(vertexBufferLocation, GL_FLOAT,3,0);
   QGLBuffer::release(QGLBuffer::VertexBuffer);
-
   buffers[INDICES]->bind();
   glDrawElements(GL_QUADS, buffers[INDICES]->size() / sizeof(unsigned short), GL_UNSIGNED_SHORT,0);
   QGLBuffer::release(QGLBuffer::IndexBuffer);
-
   shaderProgram->disableAttributeArray(vertexBufferLocation);
-
-
   shaderProgram->release();
 }
 
@@ -217,7 +168,6 @@ void GLWidget::paintGL() {
 #undef SCALE
 #undef PI
 #undef RAD_TO_DEG
-
 
 void GLWidget::resizeGL() {
   glViewport(0,0, width(), height());
