@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Jun 22 19:23:26 2012
-**      by: Qt User Interface Compiler version 4.8.0
+** Created: Mon Jul 9 16:55:51 2012
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -18,13 +18,11 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
-#include <QtGui/QListView>
 #include <QtGui/QMainWindow>
 #include <QtGui/QMenu>
 #include <QtGui/QMenuBar>
 #include <QtGui/QStatusBar>
 #include <QtGui/QToolBar>
-#include <QtGui/QTreeView>
 #include <QtGui/QWidget>
 #include "glwidget.h"
 
@@ -35,15 +33,14 @@ class Ui_MainWindow
 public:
     QAction *actionUpdate;
     QAction *actionUpdate_2;
+    QAction *actionQuit;
     QWidget *centralWidget;
-    QTreeView *treeView;
-    QListView *listView;
     QGroupBox *groupBox;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_2;
+    QLineEdit *transX;
+    QLineEdit *transY;
     QLineEdit *lineEdit_3;
     QLineEdit *lineEdit_4;
     QLineEdit *lineEdit_5;
@@ -54,15 +51,13 @@ public:
     QLabel *label_10;
     QLabel *label_11;
     QLabel *label_12;
-    QLineEdit *lineEdit_7;
+    QLineEdit *transZ;
     QLineEdit *lineEdit_8;
     QLineEdit *lineEdit_9;
     QLabel *label_13;
     QLabel *label_14;
     QLabel *label_15;
     GLWidget *glwidget;
-    QLabel *label_4;
-    QLabel *label_5;
     QLabel *label_6;
     QMenuBar *menuBar;
     QMenu *menuMen;
@@ -74,19 +69,21 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(844, 592);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->setMinimumSize(QSize(353, 171));
         MainWindow->setFocusPolicy(Qt::StrongFocus);
         actionUpdate = new QAction(MainWindow);
         actionUpdate->setObjectName(QString::fromUtf8("actionUpdate"));
         actionUpdate_2 = new QAction(MainWindow);
         actionUpdate_2->setObjectName(QString::fromUtf8("actionUpdate_2"));
+        actionQuit = new QAction(MainWindow);
+        actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        treeView = new QTreeView(centralWidget);
-        treeView->setObjectName(QString::fromUtf8("treeView"));
-        treeView->setGeometry(QRect(10, 30, 161, 281));
-        listView = new QListView(centralWidget);
-        listView->setObjectName(QString::fromUtf8("listView"));
-        listView->setGeometry(QRect(10, 340, 161, 161));
         groupBox = new QGroupBox(centralWidget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setGeometry(QRect(680, 41, 151, 421));
@@ -99,12 +96,12 @@ public:
         label_3 = new QLabel(groupBox);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(10, 295, 67, 17));
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        lineEdit->setGeometry(QRect(30, 50, 113, 27));
-        lineEdit_2 = new QLineEdit(groupBox);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        lineEdit_2->setGeometry(QRect(30, 80, 113, 27));
+        transX = new QLineEdit(groupBox);
+        transX->setObjectName(QString::fromUtf8("transX"));
+        transX->setGeometry(QRect(30, 50, 113, 27));
+        transY = new QLineEdit(groupBox);
+        transY->setObjectName(QString::fromUtf8("transY"));
+        transY->setGeometry(QRect(30, 80, 113, 27));
         lineEdit_3 = new QLineEdit(groupBox);
         lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
         lineEdit_3->setGeometry(QRect(30, 181, 113, 27));
@@ -135,9 +132,9 @@ public:
         label_12 = new QLabel(groupBox);
         label_12->setObjectName(QString::fromUtf8("label_12"));
         label_12->setGeometry(QRect(19, 84, 16, 17));
-        lineEdit_7 = new QLineEdit(groupBox);
-        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
-        lineEdit_7->setGeometry(QRect(30, 110, 113, 27));
+        transZ = new QLineEdit(groupBox);
+        transZ->setObjectName(QString::fromUtf8("transZ"));
+        transZ->setGeometry(QRect(30, 110, 113, 27));
         lineEdit_8 = new QLineEdit(groupBox);
         lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
         lineEdit_8->setGeometry(QRect(30, 241, 113, 27));
@@ -154,24 +151,21 @@ public:
         label_15->setObjectName(QString::fromUtf8("label_15"));
         label_15->setGeometry(QRect(20, 114, 16, 17));
         glwidget = new GLWidget(centralWidget);
-        glwidget->setObjectName(QString::fromUtf8("widget"));
-        glwidget->setGeometry(QRect(180, 40, 491, 421));
+        glwidget->setObjectName(QString::fromUtf8("glwidget"));
+        glwidget->setGeometry(QRect(20, 40, 651, 481));
+        sizePolicy.setHeightForWidth(glwidget->sizePolicy().hasHeightForWidth());
+        glwidget->setSizePolicy(sizePolicy);
+        glwidget->setMinimumSize(QSize(0, 0));
         glwidget->setCursor(QCursor(Qt::CrossCursor));
         glwidget->setFocusPolicy(Qt::StrongFocus);
         glwidget->setAutoFillBackground(false);
-        label_4 = new QLabel(centralWidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(10, 320, 67, 17));
-        label_5 = new QLabel(centralWidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setGeometry(QRect(10, 10, 91, 17));
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(180, 20, 101, 17));
+        label_6->setGeometry(QRect(230, 20, 101, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 844, 25));
+        menuBar->setGeometry(QRect(0, 0, 844, 23));
         menuMen = new QMenu(menuBar);
         menuMen->setObjectName(QString::fromUtf8("menuMen"));
         MainWindow->setMenuBar(menuBar);
@@ -184,8 +178,13 @@ public:
 
         menuBar->addAction(menuMen->menuAction());
         menuMen->addAction(actionUpdate_2);
+        menuMen->addAction(actionQuit);
 
         retranslateUi(MainWindow);
+        QObject::connect(actionQuit, SIGNAL(activated()), MainWindow, SLOT(close()));
+        QObject::connect(transX, SIGNAL(textChanged(QString)), MainWindow, SLOT(translate()));
+        QObject::connect(transY, SIGNAL(textChanged(QString)), glwidget, SLOT(translate()));
+        QObject::connect(transZ, SIGNAL(textChanged(QString)), glwidget, SLOT(translate()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
@@ -195,6 +194,7 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
         actionUpdate->setText(QApplication::translate("MainWindow", "Update", 0, QApplication::UnicodeUTF8));
         actionUpdate_2->setText(QApplication::translate("MainWindow", "Update", 0, QApplication::UnicodeUTF8));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("MainWindow", "Transformations", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("MainWindow", "Translation:", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("MainWindow", "Rotation:", 0, QApplication::UnicodeUTF8));
@@ -208,8 +208,6 @@ public:
         label_13->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
         label_14->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
         label_15->setText(QApplication::translate("MainWindow", "Z", 0, QApplication::UnicodeUTF8));
-        label_4->setText(QApplication::translate("MainWindow", "Assets", 0, QApplication::UnicodeUTF8));
-        label_5->setText(QApplication::translate("MainWindow", "Szene- Graph", 0, QApplication::UnicodeUTF8));
         label_6->setText(QApplication::translate("MainWindow", "Render View", 0, QApplication::UnicodeUTF8));
         menuMen->setTitle(QApplication::translate("MainWindow", "Men\303\274", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

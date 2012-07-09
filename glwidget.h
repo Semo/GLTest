@@ -30,9 +30,12 @@ public:
 
     void keyPressEvent(QKeyEvent *event);
 
+    GLfloat transX;
+
 signals:
 
 public slots:
+    void translate();
     void timerRotation();
 
 private:
@@ -56,6 +59,8 @@ private:
     QMatrix4x4 modelMatrix;
 
     void loadOBJ();
+
+    QTimer *timer;
 
 
 

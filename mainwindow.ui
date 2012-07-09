@@ -80,7 +80,7 @@
       <string>Scale:</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit">
+    <widget class="QLineEdit" name="transX">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -90,7 +90,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_2">
+    <widget class="QLineEdit" name="transY">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -218,7 +218,7 @@
       <string>Y</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_7">
+    <widget class="QLineEdit" name="transZ">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -322,7 +322,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>180</x>
+      <x>230</x>
       <y>20</y>
       <width>101</width>
       <height>17</height>
@@ -383,8 +383,79 @@
    <extends>QWidget</extends>
    <header>glwidget.h</header>
    <container>1</container>
+   <slots>
+    <slot>translate()</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionQuit</sender>
+   <signal>activated()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>transX</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>translate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>transY</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>glwidget</receiver>
+   <slot>translate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>170</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>transZ</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>glwidget</receiver>
+   <slot>translate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>316</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>translate()</slot>
+ </slots>
 </ui>

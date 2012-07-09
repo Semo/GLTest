@@ -1,10 +1,12 @@
 #include "glwidget.h"
 #include <iostream>
 #include "objloader.h"
-
+#include <QLocale>
 #include <QKeyEvent>
 
 using namespace std;
+
+
 
 GLWidget::GLWidget(QWidget *parent): QGLWidget(parent){}
 
@@ -26,36 +28,46 @@ void GLWidget::keyPressEvent(QKeyEvent *event) {
 
 }
 
+void GLWidget::translate(){
+
+  cout << "translate" << endl;
+
+}
+
+
+
+
+
 void GLWidget::loadOBJ() {
 
-    float vertices[][3] = {
-        {0.0, 0.0, 0.0},
-        {1.0, 0.0, 0.0},
-        {1.0, 1.0, 0.0}
-    };
+//    float vertices[][3] = {
+//        {0.0, 0.0, 0.0},
+//        {1.0, 0.0, 0.0},
+//        {1.0, 1.0, 0.0}
+//    };
 
-    float colors[][3] = {
-        {1.0, 0.0, 0.0},
-        {1.0, 1.0, 0.0},
-        {0.0, 0.0, 1.0}
-        //{0.0, 0.0, 1.0}
-    };
+//    float colors[][3] = {
+//        {1.0, 0.0, 0.0},
+//        {1.0, 1.0, 0.0},
+//        {0.0, 0.0, 1.0}
+//        //{0.0, 0.0, 1.0}
+//    };
 
-    unsigned short indices [] = {
-        0,1,2
-    };
+//    unsigned short indices [] = {
+//        0,1,2
+//    };
 
-//    vector<float> *vertices, *normals, *textures;
-//    vector<unsigned short>* f_indices, *n_indices, *t_indices;
+    vector<float> *vertices, *normals, *textures;
+    vector<unsigned short>* f_indices, *n_indices, *t_indices;
 
-//    vertices = new vector<float>;
-//    normals = new vector<float>;
-//    textures = new vector<float>;
-//    f_indices = new vector<unsigned short>;
-//    n_indices = new vector<unsigned short>;
-//    t_indices = new vector<unsigned short>;
+    vertices = new vector<float>;
+    normals = new vector<float>;
+    textures = new vector<float>;
+    f_indices = new vector<unsigned short>;
+    n_indices = new vector<unsigned short>;
+    t_indices = new vector<unsigned short>;
 
-//    parse("/home/semo/cube2.obj", vertices, normals, textures, f_indices, n_indices, t_indices);
+    parse("/home/semo/cube2.obj", vertices, normals, textures, f_indices, n_indices, t_indices);
 
     buffers[VERTICES] = new QGLBuffer(QGLBuffer::VertexBuffer);
     buffers[INDICES] = new QGLBuffer(QGLBuffer::IndexBuffer);
@@ -64,21 +76,22 @@ void GLWidget::loadOBJ() {
     buffers[INDICES]->create();
 
     buffers[VERTICES]->bind();
-    //buffers[VERTICES]->allocate(&(*vertices)[0], vertices->size() * sizeof(float));
-    buffers[VERTICES]->allocate(vertices, sizeof(vertices) *sizeof(float));
+    buffers[VERTICES]->allocate(&(*vertices)[0], vertices->size() * sizeof(float));
+//    buffers[VERTICES]->allocate(vertices, sizeof(vertices) *sizeof(float));
     QGLBuffer::release(QGLBuffer::VertexBuffer);
 
     buffers[INDICES]->bind();
-    //buffers[INDICES]->allocate(&(*f_indices)[0], f_indices->size() * sizeof(unsigned short));
-    buffers[INDICES]->allocate(indices, sizeof(indices) * sizeof(float));
+    buffers[INDICES]->allocate(&(*f_indices)[0], f_indices->size() * sizeof(unsigned short));
+//    buffers[INDICES]->allocate(indices, sizeof(indices) * sizeof(float));
     QGLBuffer::release(QGLBuffer::IndexBuffer);
 
 }
 
 QTimer *timer;
 void GLWidget::initializeGL() {
+  QLocale::setDefault (QLocale::C);
     loadOBJ();
-    resizeGL();
+    //resizeGL();
 
     Q_INIT_RESOURCE(glslResources);
 
@@ -137,9 +150,9 @@ void GLWidget::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     modelMatrix.setToIdentity();
-    modelMatrix.translate(0.0, 0.0, 0.0);
+    modelMatrix.translate(0.0, 0.0, 2.0);
     modelMatrix.rotate(RAD_TO_DEG(angle), 0.0f, 0.0f, 1.0f);
-    //modelMatrix.rotate(RAD_TO_DEG(angle)*2, 0.0f, 1.0f, 0.0f);
+    modelMatrix.rotate(RAD_TO_DEG(angle)*2, 0.0f, 1.0f, 0.0f);
 
     shaderProgram->bind();
 

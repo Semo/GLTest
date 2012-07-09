@@ -14,12 +14,18 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::resizeEvent(QResizeEvent * event) {
-    int w = event->size().width() - 353;
+    int w = event->size().width() - 203;
     int h = event->size().height() - 171;
-
-    //std::cout << w << "x" << h << std::endl;
 
     ui->glwidget->resize(ui->glwidget->minimumWidth() + w, ui->glwidget->minimumHeight() + h);
     ui->glwidget->resizeGL();
-    ui->groupBox->move(680 + w - 491, ui->groupBox->y());
+    ui->groupBox->move(520 + w - 491, ui->groupBox->y());
+
+
+
+}
+
+void MainWindow::translate() {
+
+  ui->glwidget->transX = (GLfloat) ui->transX->text ().toFloat ();
 }
