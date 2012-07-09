@@ -4,22 +4,26 @@
 #include <QMainWindow>
 
 namespace Ui {
-class MainWindow;
+  class MainWindow;
 }
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
+  Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    void resizeEvent(QResizeEvent * event);
-    ~MainWindow();
+  explicit MainWindow(QWidget *parent = 0);
+  void resizeEvent(QResizeEvent * event);
+  ~MainWindow();
 
 public slots:
-    void translate();
+  void translate();
+  void rotateX();
+  void rotateY();
+  void rotateZ();
+  void scale();
 private:
-    Ui::MainWindow *ui;
+  Ui::MainWindow *ui;
 
 
 };

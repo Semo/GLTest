@@ -100,7 +100,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_3">
+    <widget class="QLineEdit" name="roteX">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -110,7 +110,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_4">
+    <widget class="QLineEdit" name="roteY">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -120,7 +120,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_5">
+    <widget class="QLineEdit" name="scaleX">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -130,7 +130,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_6">
+    <widget class="QLineEdit" name="scaleY">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -228,7 +228,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_8">
+    <widget class="QLineEdit" name="roteZ">
      <property name="geometry">
       <rect>
        <x>30</x>
@@ -238,7 +238,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QLineEdit" name="lineEdit_9">
+    <widget class="QLineEdit" name="scaleZ">
      <property name="geometry">
       <rect>
        <x>31</x>
@@ -322,7 +322,7 @@
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>230</x>
+      <x>20</x>
       <y>20</y>
       <width>101</width>
       <height>17</height>
@@ -385,6 +385,8 @@
    <container>1</container>
    <slots>
     <slot>translate()</slot>
+    <slot>scale()</slot>
+    <slot>rotate()</slot>
    </slots>
   </customwidget>
  </customwidgets>
@@ -425,7 +427,7 @@
   <connection>
    <sender>transY</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>glwidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>translate()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -433,15 +435,15 @@
      <y>170</y>
     </hint>
     <hint type="destinationlabel">
-     <x>345</x>
-     <y>316</y>
+     <x>421</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>transZ</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>glwidget</receiver>
+   <receiver>MainWindow</receiver>
    <slot>translate()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -449,13 +451,113 @@
      <y>200</y>
     </hint>
     <hint type="destinationlabel">
-     <x>345</x>
-     <y>316</y>
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roteX</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>rotateX()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>271</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roteY</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>rotateY()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>roteZ</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>rotateZ()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>331</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scaleX</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scale()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scaleY</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scale()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>766</x>
+     <y>435</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>scaleZ</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>scale()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>767</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>295</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>translate()</slot>
+  <slot>rotateX()</slot>
+  <slot>scale()</slot>
+  <slot>rotateY()</slot>
+  <slot>rotateZ()</slot>
  </slots>
 </ui>

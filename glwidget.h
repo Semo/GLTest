@@ -16,51 +16,60 @@
 #define INDICES 0
 #define VERTICES 1
 #define COLORS 2
+#define X 0
+#define Y 1
+#define Z 2
 
 class GLWidget : public QGLWidget
 {
-    Q_OBJECT
+  Q_OBJECT
 public:
-    explicit GLWidget(QWidget *parent = 0);
-    ~GLWidget();
+  explicit GLWidget(QWidget *parent = 0);
+  ~GLWidget();
 
-    void initializeGL();
-    void paintGL();
-    void resizeGL();
+  void initializeGL();
+  void paintGL();
+  void resizeGL();
 
-    void keyPressEvent(QKeyEvent *event);
-
-    GLfloat transX;
+  void keyPressEvent(QKeyEvent *event);
 
 signals:
 
 public slots:
-    void translate();
-    void timerRotation();
+  void translate(GLfloat x, GLfloat y, GLfloat z);
+  void rotateX(GLfloat angle);
+  void rotateY(GLfloat angle);
+  void rotateZ(GLfloat angle);
+  void scale(GLfloat x, GLfloat y, GLfloat z);
+  void timerRotation();
 
 private:
 
-    QGLBuffer* buffers[NUM_BUFFERS];
-    QGLShaderProgram* shaderProgram;
+  QGLBuffer* buffers[NUM_BUFFERS];
+  QGLShaderProgram* shaderProgram;
 
-    GLint vertexBufferLocation;
-    GLint colorBufferLocation;
+  GLint vertexBufferLocation;
+  GLint colorBufferLocation;
 
-    GLint modelMatrixLocation;
-    GLint viewMatrixLocation;
-    GLint projectionMatrixLocation;
+  GLint modelMatrixLocation;
+  GLint viewMatrixLocation;
+  GLint projectionMatrixLocation;
 
-    GLfloat angle;
+  GLfloat angle;
 
-    QMatrix4x4 viewMatrix;
-    QMatrix4x4 projectionMatrix;
+  QMatrix4x4 viewMatrix;
+  QMatrix4x4 projectionMatrix;
 
-    QMatrix4x4 transMatrix[3];
-    QMatrix4x4 modelMatrix;
+  QMatrix4x4 transMatrix[3];
+  QMatrix4x4 modelMatrix;
 
-    void loadOBJ();
+  void loadOBJ();
 
-    QTimer *timer;
+  QTimer *timer;
+
+  float trans[3];
+  float rot[3];
+  float scales[3];
 
 
 

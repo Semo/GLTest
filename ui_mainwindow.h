@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Mon Jul 9 16:55:51 2012
+** Created: Mon Jul 9 18:36:47 2012
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -41,10 +41,10 @@ public:
     QLabel *label_3;
     QLineEdit *transX;
     QLineEdit *transY;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_5;
-    QLineEdit *lineEdit_6;
+    QLineEdit *roteX;
+    QLineEdit *roteY;
+    QLineEdit *scaleX;
+    QLineEdit *scaleY;
     QLabel *label_7;
     QLabel *label_8;
     QLabel *label_9;
@@ -52,8 +52,8 @@ public:
     QLabel *label_11;
     QLabel *label_12;
     QLineEdit *transZ;
-    QLineEdit *lineEdit_8;
-    QLineEdit *lineEdit_9;
+    QLineEdit *roteZ;
+    QLineEdit *scaleZ;
     QLabel *label_13;
     QLabel *label_14;
     QLabel *label_15;
@@ -102,18 +102,18 @@ public:
         transY = new QLineEdit(groupBox);
         transY->setObjectName(QString::fromUtf8("transY"));
         transY->setGeometry(QRect(30, 80, 113, 27));
-        lineEdit_3 = new QLineEdit(groupBox);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setGeometry(QRect(30, 181, 113, 27));
-        lineEdit_4 = new QLineEdit(groupBox);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setGeometry(QRect(30, 211, 113, 27));
-        lineEdit_5 = new QLineEdit(groupBox);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setGeometry(QRect(30, 315, 113, 27));
-        lineEdit_6 = new QLineEdit(groupBox);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-        lineEdit_6->setGeometry(QRect(30, 345, 113, 27));
+        roteX = new QLineEdit(groupBox);
+        roteX->setObjectName(QString::fromUtf8("roteX"));
+        roteX->setGeometry(QRect(30, 181, 113, 27));
+        roteY = new QLineEdit(groupBox);
+        roteY->setObjectName(QString::fromUtf8("roteY"));
+        roteY->setGeometry(QRect(30, 211, 113, 27));
+        scaleX = new QLineEdit(groupBox);
+        scaleX->setObjectName(QString::fromUtf8("scaleX"));
+        scaleX->setGeometry(QRect(30, 315, 113, 27));
+        scaleY = new QLineEdit(groupBox);
+        scaleY->setObjectName(QString::fromUtf8("scaleY"));
+        scaleY->setGeometry(QRect(30, 345, 113, 27));
         label_7 = new QLabel(groupBox);
         label_7->setObjectName(QString::fromUtf8("label_7"));
         label_7->setGeometry(QRect(19, 54, 20, 20));
@@ -135,12 +135,12 @@ public:
         transZ = new QLineEdit(groupBox);
         transZ->setObjectName(QString::fromUtf8("transZ"));
         transZ->setGeometry(QRect(30, 110, 113, 27));
-        lineEdit_8 = new QLineEdit(groupBox);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
-        lineEdit_8->setGeometry(QRect(30, 241, 113, 27));
-        lineEdit_9 = new QLineEdit(groupBox);
-        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
-        lineEdit_9->setGeometry(QRect(31, 375, 113, 27));
+        roteZ = new QLineEdit(groupBox);
+        roteZ->setObjectName(QString::fromUtf8("roteZ"));
+        roteZ->setGeometry(QRect(30, 241, 113, 27));
+        scaleZ = new QLineEdit(groupBox);
+        scaleZ->setObjectName(QString::fromUtf8("scaleZ"));
+        scaleZ->setGeometry(QRect(31, 375, 113, 27));
         label_13 = new QLabel(groupBox);
         label_13->setObjectName(QString::fromUtf8("label_13"));
         label_13->setGeometry(QRect(19, 247, 16, 17));
@@ -161,7 +161,7 @@ public:
         glwidget->setAutoFillBackground(false);
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setGeometry(QRect(230, 20, 101, 17));
+        label_6->setGeometry(QRect(20, 20, 101, 17));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
@@ -183,8 +183,14 @@ public:
         retranslateUi(MainWindow);
         QObject::connect(actionQuit, SIGNAL(activated()), MainWindow, SLOT(close()));
         QObject::connect(transX, SIGNAL(textChanged(QString)), MainWindow, SLOT(translate()));
-        QObject::connect(transY, SIGNAL(textChanged(QString)), glwidget, SLOT(translate()));
-        QObject::connect(transZ, SIGNAL(textChanged(QString)), glwidget, SLOT(translate()));
+        QObject::connect(transY, SIGNAL(textChanged(QString)), MainWindow, SLOT(translate()));
+        QObject::connect(transZ, SIGNAL(textChanged(QString)), MainWindow, SLOT(translate()));
+        QObject::connect(roteX, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateX()));
+        QObject::connect(roteY, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateY()));
+        QObject::connect(roteZ, SIGNAL(textChanged(QString)), MainWindow, SLOT(rotateZ()));
+        QObject::connect(scaleX, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
+        QObject::connect(scaleY, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
+        QObject::connect(scaleZ, SIGNAL(textChanged(QString)), MainWindow, SLOT(scale()));
 
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
