@@ -10,8 +10,8 @@
  * @author François Dubois <siokdub@gmail.com>
  * @author Sebastian Morkisch <semox78@gmail.com>
  *
- * @brief parse
- * @param filename
+ * @brief parse - parses a OBJ File for Parameters defining a GL Object
+ * @param filename - given as String
  * @param vertices
  * @param normals
  * @param textures

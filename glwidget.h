@@ -9,6 +9,9 @@
 #include <QKeyEvent>
 #include <QTimer>
 
+/**
+ * Some final Constants defined required by GL Objects
+ */
 #define NUM_BUFFERS 3
 #define INDICES 0
 #define VERTICES 1
@@ -41,11 +44,42 @@ public:
 signals:
 
 public slots:
+
+  /**
+   * @brief translate - Translates a GL Object
+   * @param x
+   * @param y
+   * @param z
+   */
   void translate(GLfloat x, GLfloat y, GLfloat z);
+
+  /**
+   * @brief rotateX - Rotates a GL Object around X-Axis
+   * @param angle
+   */
   void rotateX(GLfloat angle);
+
+  /**
+   * @brief rotateY - Rotates a GL Object around Y-Axis
+   * @param angle
+   */
   void rotateY(GLfloat angle);
+
+  /**
+   * @brief rotateZ - Rotates a GL Object around Z-Axis
+   * @param angle
+   */
   void rotateZ(GLfloat angle);
+
+  /**
+   * @brief scale - Scales a GL Object by a scale factor
+   * @param factor
+   */
   void scale(GLfloat factor);
+
+  /**
+   * @brief timerRotation - Is used to set Rotation Speed
+   */
   void timerRotation();
 
 private:

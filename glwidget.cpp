@@ -88,6 +88,8 @@ void GLWidget::loadOBJ() {
 void GLWidget::initializeGL() {
   //Scale Helper. Initial Value.
   factor = 1;
+
+  //IMPORTANT: SETS LOCALE FOR KOMMA RECOGNITION
   QLocale::setDefault (QLocale::C);
   loadOBJ();
   Q_INIT_RESOURCE(glslResources);
@@ -129,14 +131,14 @@ void GLWidget::initializeGL() {
   glClearColor(0.0, 0.0, 0.0, 1.0);
   timer = new QTimer(this);
   connect(timer, SIGNAL(timeout()), this, SLOT(timerRotation()));
-  timer->setInterval(16);
+  timer->setInterval(2);
   timer->start();
 }
 
 #define PI 3.1459f
 #define RAD_TO_DEG(X) (X * 180 / PI)
 void GLWidget::timerRotation() {
-  angle += PI / 180 * 0.5;
+  angle += PI / 180 * 5;
   updateGL();
 }
 
@@ -144,6 +146,8 @@ void GLWidget::paintGL() {
   glClear(GL_COLOR_BUFFER_BIT);
   modelMatrix.setToIdentity();
   modelMatrix.translate(trans[X], trans[Y], trans[Z]);
+  modelMatrix.rotate (angle,0.0, 1.0, 0.0);
+  modelMatrix.rotate (angle*2, 0.0, 0.0, 1.0);
   modelMatrix.rotate (rot[X], 1.0, 0.0, 0.0);
   modelMatrix.rotate (rot[Y], 0.0, 1.0, 0.0);
   modelMatrix.rotate (rot[Z], 0.0, 0.0, 1.0);
